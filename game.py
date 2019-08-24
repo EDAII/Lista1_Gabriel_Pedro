@@ -19,7 +19,10 @@ while w < screen_size[0]:
 
 card_skin = pygame.Surface((35, 50))
 card_skin.fill((150, 65, 200))
+card_skin_selected = pygame.Surface((35, 50))
+card_skin_selected.fill((255, 0, 0))
 mouse_position = ()
+card_selected = [()]
 print(card_pos)
 
 while True:
@@ -29,11 +32,16 @@ while True:
         elif event.type == MOUSEBUTTONDOWN:
             mouse_position = (pygame.mouse.get_pos()[1], pygame.mouse.get_pos()[0])
             last = [screen_size[0], screen_size[1]]
-            card_selected = (ceil((mouse_position[0])/67),ceil((mouse_position[1])/47))
-            print(card_selected)
-            #print(card_selected)
+            card_selected_index = (ceil((mouse_position[0])/67)-1,ceil((mouse_position[1])/47)-1)
+            card_selected.append(card_pos[card_selected_index[1]*7+card_selected_index[0]])
+
 
     screen.fill((0,0,0))
+
     for pos in card_pos:
-        screen.blit(card_skin, pos)
+        if pos in card_selected:
+            screen.blit(card_skin_selected, pos)
+        else:
+            screen.blit(card_skin, pos)
+
     pygame.display.update()
