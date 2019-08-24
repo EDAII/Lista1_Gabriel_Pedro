@@ -21,9 +21,22 @@ card_skin = pygame.Surface((35, 50))
 card_skin.fill((150, 65, 200))
 card_skin_selected = pygame.Surface((35, 50))
 card_skin_selected.fill((255, 0, 0))
+
+pygame.font.init() # you have to call this at the start,
+                   # if you want to use this module.
+myfont = pygame.font.SysFont('Comic Sans MS', 30)
+
+
+
 mouse_position = ()
 card_selected = [()]
 print(card_pos)
+
+dict = {}
+i = 0
+for p in card_pos:
+    dict[p] = i
+    i+=1
 
 while True:
     for event in pygame.event.get():
@@ -41,7 +54,11 @@ while True:
     for pos in card_pos:
         if pos in card_selected:
             screen.blit(card_skin_selected, pos)
+            textsurface = myfont.render(str(dict[pos]), False, (0, 0, 0))
+            screen.blit(textsurface, (pos[0]+12, pos[1]+18))
         else:
             screen.blit(card_skin, pos)
+
+
 
     pygame.display.update()
