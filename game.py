@@ -1,6 +1,7 @@
 import pygame
 from math import ceil
 from pygame.locals import *
+import numbers_gen
 pygame.init()
 screen_size = (705, 462)
 screen = pygame.display.set_mode(screen_size)
@@ -20,11 +21,13 @@ while w < screen_size[0]:
 card_skin = pygame.Surface((35, 50))
 card_skin.fill((150, 65, 200))
 card_skin_selected = pygame.Surface((35, 50))
-card_skin_selected.fill((255, 0, 0))
+card_skin_selected.fill((200, 35, 35))
+card_found = pygame.Surface((35, 50))
+card_found.fill((35, 200, 35))
 
 pygame.font.init() # you have to call this at the start,
                    # if you want to use this module.
-myfont = pygame.font.SysFont('Comic Sans MS', 30)
+myfont = pygame.font.SysFont('Comic Sans MS', 18)
 
 
 
@@ -33,9 +36,12 @@ card_selected = [()]
 print(card_pos)
 
 dict = {}
+numbers = numbers_gen.numbers_gen()
+number_to_find = numbers_gen.choose_number(numbers)
+pygame.display.set_caption('Where is the ' + str(number_to_find) + ' card?')
 i = 0
 for p in card_pos:
-    dict[p] = i
+    dict[p] = numbers[i]
     i+=1
 
 while True:
@@ -52,12 +58,16 @@ while True:
     screen.fill((0,0,0))
 
     for pos in card_pos:
+        show = card_skin
         if pos in card_selected:
-            screen.blit(card_skin_selected, pos)
-            textsurface = myfont.render(str(dict[pos]), False, (0, 0, 0))
-            screen.blit(textsurface, (pos[0]+12, pos[1]+18))
-        else:
-            screen.blit(card_skin, pos)
+            if dict[pos] == number_to_find:
+                show = card_found
+            else:
+                show = card_skin_selected
+            textsurface = myfont.render(str(dict[pos]), False, (255, 255, 255))
+        screen.blit(show, pos)
+        if pos in card_selected:
+            screen.blit(textsurface, (pos[0], pos[1]+18))
 
 
 
