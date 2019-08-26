@@ -37,6 +37,7 @@ dict = {}
 numbers = numbers_gen.numbers_gen()
 number_to_find = numbers_gen.choose_number(numbers)
 print('achei em '+str(find.binary_search(number_to_find, numbers))+' passos')
+print('achei em '+str(find.index_search(number_to_find, numbers))+' passos')
 pygame.display.set_caption('Where is the ' + str(number_to_find) + ' card?')
 i = 0
 for p in card_pos:
