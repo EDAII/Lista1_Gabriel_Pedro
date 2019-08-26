@@ -17,7 +17,6 @@ while w < screen_size[0]:
     h = 7
     w+=47
 
-
 card_skin = pygame.Surface((35, 50))
 card_skin.fill((150, 65, 200))
 card_skin_selected = pygame.Surface((35, 50))
@@ -28,8 +27,6 @@ card_found.fill((35, 200, 35))
 pygame.font.init() # you have to call this at the start,
                    # if you want to use this module.
 myfont = pygame.font.SysFont('Comic Sans MS', 18)
-
-
 
 mouse_position = ()
 card_selected = [()]
@@ -48,15 +45,14 @@ while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
+            exit()
         elif event.type == MOUSEBUTTONDOWN:
             mouse_position = (pygame.mouse.get_pos()[1], pygame.mouse.get_pos()[0])
             last = [screen_size[0], screen_size[1]]
             card_selected_index = (ceil((mouse_position[0])/67)-1,ceil((mouse_position[1])/47)-1)
             card_selected.append(card_pos[card_selected_index[1]*7+card_selected_index[0]])
-
-
-    screen.fill((0,0,0))
-
+    pygame.display.update()
+    screen.fill((0, 0, 0))
     for pos in card_pos:
         show = card_skin
         if pos in card_selected:
@@ -68,7 +64,3 @@ while True:
         screen.blit(show, pos)
         if pos in card_selected:
             screen.blit(textsurface, (pos[0], pos[1]+18))
-
-
-
-    pygame.display.update()
