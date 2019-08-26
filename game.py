@@ -2,6 +2,7 @@ import pygame
 from math import ceil
 from pygame.locals import *
 import numbers_gen
+import find
 pygame.init()
 screen_size = (705, 462)
 screen = pygame.display.set_mode(screen_size)
@@ -35,6 +36,7 @@ print(card_pos)
 dict = {}
 numbers = numbers_gen.numbers_gen()
 number_to_find = numbers_gen.choose_number(numbers)
+print('achei em '+str(find.binary_search(number_to_find, numbers))+' passos')
 pygame.display.set_caption('Where is the ' + str(number_to_find) + ' card?')
 i = 0
 for p in card_pos:
