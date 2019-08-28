@@ -8,5 +8,5 @@ def numbers_gen():
     number_list.sort()
     return number_list
 def choose_number(number_list):
-    n = randint(0, 105)
+    n = randint(0, 104)
     return number_list[n]

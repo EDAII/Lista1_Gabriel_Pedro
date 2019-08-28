@@ -8,7 +8,7 @@ import result_screen
 
 def start():
     pygame.init()
-    screen_size = (705, 462)
+    screen_size = (705, 512)
     screen = pygame.display.set_mode(screen_size)
     pygame.display.set_caption('Where is the card?')
 
@@ -16,8 +16,8 @@ def start():
     h = 7
     card_pos = []
     # criando posições das cartas
-    while w < screen_size[0]:
-        while h < screen_size[1]:
+    while w < 705:
+        while h < 462:
             card_pos.append((w, h))
             h += 67
         h = 7
@@ -32,8 +32,7 @@ def start():
 
     pygame.font.init()  # you have to call this at the start,
     # if you want to use this module.
-    myfont = pygame.font.SysFont('Comic Sans MS', 18)
-
+    myfont = pygame.font.SysFont('bold', 18)
     mouse_position = ()
     card_selected = [()]
 
@@ -43,6 +42,9 @@ def start():
     binary_search_result = find.binary_search(number_to_find, numbers)
     index_search_result = find.index_search(number_to_find, numbers)
     pygame.display.set_caption('Where is the ' + str(number_to_find) + ' card?')
+    card_to_found_fount = pygame.font.SysFont('bold', 40)
+    card_to_found = card_to_found_fount.render('Where is the ' + str(number_to_find) + ' card?', False, (255, 255, 255))
+
     i = 0
     for p in card_pos:
         dict[p] = numbers[i]
@@ -57,10 +59,11 @@ def start():
                 exit()
             elif event.type == MOUSEBUTTONDOWN:
                 mouse_position = (pygame.mouse.get_pos()[1], pygame.mouse.get_pos()[0])
-                last = [screen_size[0], screen_size[1]]
-                card_selected_index = (ceil((mouse_position[0]) / 67) - 1, ceil((mouse_position[1]) / 47) - 1)
-                card_selected.append(card_pos[card_selected_index[1] * 7 + card_selected_index[0]])
-                user_steps += 1
+                if mouse_position[0] <= 462:
+                    last = [screen_size[0], screen_size[1]]
+                    card_selected_index = (ceil((mouse_position[0]) / 67) - 1, ceil((mouse_position[1]) / 47) - 1)
+                    card_selected.append(card_pos[card_selected_index[1] * 7 + card_selected_index[0]])
+                    user_steps += 1
         pygame.display.update()
         screen.fill((0, 0, 0))
         if result:
@@ -84,3 +87,4 @@ def start():
             screen.blit(show, pos)
             if pos in card_selected:
                 screen.blit(textsurface, (pos[0], pos[1] + 18))
+            screen.blit(card_to_found, (150, 472))
