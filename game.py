@@ -3,6 +3,9 @@ from math import ceil
 from pygame.locals import *
 import numbers_gen
 import find
+import first_screen
+
+first_screen.begin()
 pygame.init()
 screen_size = (705, 462)
 screen = pygame.display.set_mode(screen_size)
@@ -11,13 +14,14 @@ pygame.display.set_caption('Where is the card?')
 w = 7
 h = 7
 card_pos = []
+#criando posições das cartas
 while w < screen_size[0]:
     while h < screen_size[1]:
         card_pos.append((w, h))
         h+=67
     h = 7
     w+=47
-
+#criando superfície das cartas
 card_skin = pygame.Surface((35, 50))
 card_skin.fill((150, 65, 200))
 card_skin_selected = pygame.Surface((35, 50))
@@ -31,7 +35,6 @@ myfont = pygame.font.SysFont('Comic Sans MS', 18)
 
 mouse_position = ()
 card_selected = [()]
-print(card_pos)
 
 dict = {}
 numbers = numbers_gen.numbers_gen()
