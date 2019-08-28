@@ -1,8 +1,5 @@
 import pygame
-from math import ceil
 from pygame.locals import *
-import numbers_gen
-import find
 
 
 def begin():
