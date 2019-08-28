@@ -6,7 +6,7 @@ import find
 import first_screen
 import result_screen
 
-def restart():
+def start():
     pygame.init()
     screen_size = (705, 462)
     screen = pygame.display.set_mode(screen_size)
@@ -42,8 +42,6 @@ def restart():
     number_to_find = numbers_gen.choose_number(numbers)
     binary_search_result = find.binary_search(number_to_find, numbers)
     index_search_result = find.index_search(number_to_find, numbers)
-    print('achei em ' + str(binary_search_result) + ' passos')
-    print('achei em ' + str(index_search_result) + ' passos')
     pygame.display.set_caption('Where is the ' + str(number_to_find) + ' card?')
     i = 0
     for p in card_pos:

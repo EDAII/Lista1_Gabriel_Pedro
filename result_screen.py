@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 import time
-import restart_game
+import start_game
 
 def begin(result, steps_machine, steps_user):
     time.sleep(1)
@@ -24,10 +24,9 @@ def begin(result, steps_machine, steps_user):
                 pygame.quit()
                 exit()
             elif event.type == MOUSEBUTTONDOWN:
-                print(pygame.mouse.get_pos())
                 if pygame.mouse.get_pos()[0] >= 286 and pygame.mouse.get_pos()[1]>=124:
                     if pygame.mouse.get_pos()[0] <= 384 and pygame.mouse.get_pos()[1]<=146:
-                        restart_game.restart()
+                        start_game.start()
         pygame.display.update()
         screen.fill((150, 65, 200))
         text_surface = my_font.render(result, False, (255, 255, 255))
