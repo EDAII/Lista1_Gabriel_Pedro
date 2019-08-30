@@ -20,16 +20,13 @@ def index_search(element, vetor):
         steps += 1
         i+=7
     pos = 0
-    metade = int(len(index) / 2)
-
-    for i in index:
-        if element < i:
+    for j in index:
+        if element < j:
             break
-        elif element == i:
-            return 1
+        elif element == j:
+            return steps
         else:
             pos+=1
-
     for v in vetor[(pos*7)-7:pos*7]:
         if v == element:
             return steps
