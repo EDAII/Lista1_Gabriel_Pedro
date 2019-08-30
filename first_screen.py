@@ -4,6 +4,10 @@ from pygame.locals import *
 
 def begin():
     pygame.init()
+
+    pygame.mixer.music.load("init.wav")
+    pygame.mixer.music.play(-1)
+
     screen_size = (705, 462)
     screen = pygame.display.set_mode(screen_size)
     pygame.display.set_caption('Where is the card?')
@@ -36,6 +40,7 @@ def begin():
                 pygame.quit()
                 exit()
             elif event.type == MOUSEBUTTONDOWN:
+                pygame.mixer.music.play(-1)
                 if pygame.mouse.get_pos()[0] >= 600 and pygame.mouse.get_pos()[1]>=390:
                     if pygame.mouse.get_pos()[0] <= 647 and pygame.mouse.get_pos()[1]<=425:
                         return

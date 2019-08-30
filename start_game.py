@@ -8,7 +8,12 @@ import result_screen
 
 def start():
     pygame.init()
+
+    pygame.mixer.music.load("start.wav")
+    pygame.mixer.music.play(-1)
+
     screen_size = (705, 512)
+
     screen = pygame.display.set_mode(screen_size)
     pygame.display.set_caption('Where is the card?')
 
