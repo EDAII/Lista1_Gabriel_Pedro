@@ -12,3 +12,11 @@ Após instalados os requerimentos basta dar o seguinte comando:
 ```
 python3 game.py
 ```
+# Imagens do game:
+
+## Tela de início:
+![Tela de início](https://raw.githubusercontent.com/EDAII/Lista1_Gabriel_Pedro/master/img/tela_de_inicio.png)
+## Tela de jogo:
+![Tela de jogo](https://raw.githubusercontent.com/EDAII/Lista1_Gabriel_Pedro/master/img/tela_de_jogo.png)
+## Tela de resultado:
+![Tela de resultado](https://raw.githubusercontent.com/EDAII/Lista1_Gabriel_Pedro/master/img/tela_de_resultado.png)
