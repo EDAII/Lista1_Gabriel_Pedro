@@ -1,15 +1,12 @@
 import pygame
 from math import ceil
 from pygame.locals import *
-import numbers_gen
-import find
-import first_screen
-import result_screen
+from src import result_screen, find, numbers_gen
 
 def start():
     pygame.init()
 
-    pygame.mixer.music.load("start.wav")
+    pygame.mixer.music.load("snd/start.wav")
     pygame.mixer.music.play(-1)
 
     screen_size = (705, 512)

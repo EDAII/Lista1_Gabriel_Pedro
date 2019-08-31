@@ -1,7 +1,8 @@
 import pygame
 from pygame.locals import *
 import time
-import start_game
+from src import start_game
+
 
 def begin(result, steps_machine, steps_user):
     time.sleep(1)

@@ -1,11 +1,10 @@
 import pygame
 from pygame.locals import *
 
-
 def begin():
     pygame.init()
 
-    pygame.mixer.music.load("init.wav")
+    pygame.mixer.music.load("snd/init.wav")
     pygame.mixer.music.play(-1)
 
     screen_size = (705, 462)
@@ -29,11 +28,6 @@ def begin():
     ins_texts.append(ins_font.render("As cartas estão organizadas na seguinte ordem: ", False, (255, 255, 255)))
     ins_texts.append(ins_font.render("A ordem é crescente porém a distribuição é aleatória.", False, (255, 255, 255)))
 
-
-
-
-
-
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -51,7 +45,7 @@ def begin():
         screen.blit(text_surface, (80,10))
         screen.blit(start_button_skin, (599, 390))
         #SHOW INSTRUCTIONS:
-        image = pygame.image.load('game.png')
+        image = pygame.image.load('img/game.png')
         image = pygame.transform.scale(image, (440, 320))
         pos_y = 60
         for ins in ins_texts[:-1]:
