@@ -4,8 +4,8 @@ from pygame.locals import *
 def begin():
     pygame.init()
 
-    pygame.mixer.music.load("snd/init.wav")
-    pygame.mixer.music.play(-1)
+    init_sound = pygame.mixer.Sound("snd/init.wav")
+    init_sound.play()
 
     screen_size = (705, 462)
     screen = pygame.display.set_mode(screen_size)
@@ -34,7 +34,7 @@ def begin():
                 pygame.quit()
                 exit()
             elif event.type == MOUSEBUTTONDOWN:
-                pygame.mixer.music.play(-1)
+                init_sound.stop()
                 if pygame.mouse.get_pos()[0] >= 600 and pygame.mouse.get_pos()[1]>=390:
                     if pygame.mouse.get_pos()[0] <= 647 and pygame.mouse.get_pos()[1]<=425:
                         return

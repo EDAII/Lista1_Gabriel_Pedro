@@ -6,8 +6,8 @@ from src import result_screen, find, numbers_gen
 def start():
     pygame.init()
 
-    pygame.mixer.music.load("snd/start.wav")
-    pygame.mixer.music.play(-1)
+    start_music = pygame.mixer.Sound("snd/start.wav")
+    start_music.play()
 
     screen_size = (705, 512)
 
@@ -62,6 +62,8 @@ def start():
             elif event.type == MOUSEBUTTONDOWN:
                 mouse_position = (pygame.mouse.get_pos()[1], pygame.mouse.get_pos()[0])
                 if mouse_position[0] <= 462:
+                    select_sound = pygame.mixer.Sound("snd/button-25.wav")
+                    select_sound.play()
                     last = [screen_size[0], screen_size[1]]
                     card_selected_index = (ceil((mouse_position[0]) / 67) - 1, ceil((mouse_position[1]) / 47) - 1)
                     card_selected.append(card_pos[card_selected_index[1] * 7 + card_selected_index[0]])
@@ -83,6 +85,7 @@ def start():
                         result = ('Você ganhou.')
                     else:
                         result = ('Empatamos')
+
                 else:
                     show = card_skin_selected
                 textsurface = myfont.render(str(dict[pos]), False, (255, 255, 255))
